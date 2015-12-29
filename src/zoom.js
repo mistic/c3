@@ -74,16 +74,6 @@ c3_chart_internal_fn.initDragZoom = function () {
             .on("brushend", function () {
                 var extent = $$.dragZoomBrush.extent();
 
-                // If it's same point we don't have any drag
-                if (extent[0][0] === extent[1][0]) {
-                    d3.selectAll("." + CLASS.dragZoom)
-                        .attr("class", CLASS.dragZoom + " disabled");
-
-                    $$.dragZoomBrush.clear();
-                    $$.svg.select("." + CLASS.dragZoom).call($$.dragZoomBrush);
-                    return;
-                }
-                
                 if (!config.zoom_disableDefaultBehavior) {
                     $$.api.zoom([extent[0][0], extent[1][0]]);
                 }
