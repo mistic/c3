@@ -123,7 +123,7 @@ c3_chart_internal_fn.getZoomDomain = function () {
     return [min, max];
 };
 c3_chart_internal_fn.updateZoom = function () {
-    var $$ = this, z = $$.config.zoom_enabled ? $$.zoom : function () {};
+    var $$ = this, z = $$.config.zoom_enabled && $$.config.zoom_type === 'scroll' ? $$.zoom : function () {};
     $$.main.select('.' + CLASS.zoomRect).call(z).on("dblclick.zoom", null);
     $$.main.selectAll('.' + CLASS.eventRect).call(z).on("dblclick.zoom", null);
 };
